@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_disease"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/back"
+    tools:context="com.ina.ina.DiseaseActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentStart="true"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textColor="@color/Dark"
+        android:textStyle="bold|italic"
+        android:id="@+id/textviewgod"
+        android:text="Diseases" />
+
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textviewgod">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ovo_vegetarian"
+                android:onClick="selectItem"
+                android:text="@string/ovo_vegetarian"
+                android:layout_marginLeft="@dimen/activity_vertical_margin"
+                android:layout_below="@+id/vegetarian"/>
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/vegetarian"
+                android:onClick="selectItem"
+                android:text="@string/vegetarian"
+                android:layout_marginLeft="@dimen/activity_vertical_margin"
+                android:layout_below="@+id/diabetes"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/vegan"
+                android:onClick="selectItem"
+                android:text="@string/vegan"
+                android:layout_marginLeft="@dimen/activity_vertical_margin"
+                android:layout_below="@+id/peszcetarian"/>
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/peszcetarian"
+                android:onClick="selectItem"
+                android:text="@string/peszcetarian"
+                android:layout_marginLeft="@dimen/activity_vertical_margin"
+                android:layout_below="@+id/lacto_ovo_vegetarian"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/no_pork"
+                android:onClick="selectItem"
+                android:text="@string/no_pork"
+                android:layout_marginLeft="@dimen/activity_vertical_margin"
+                android:layout_below="@+id/kosher_only"/>
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/gluten_free"
+                android:onClick="selectItem"
+                android:text="@string/glutten_free"
+                android:layout_marginLeft="@dimen/activity_vertical_margin"
+                android:layout_below="@+id/no_pork"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/peanut_allergy"
+                android:onClick="selectItem"
+                android:text="@string/peanut_allergy"
+                android:layout_marginLeft="@dimen/activity_vertical_margin"
+                android:layout_below="@+id/wheat_allergy"/>
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/wheat_allergy"
+                android:onClick="selectItem"
+                android:text="@string/wheat_allergy"
+
+                android:layout_marginLeft="@dimen/activity_vertical_margin"
+                android:layout_below="@+id/lactose_intolerant"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/soy_allergy"
+                android:onClick="selectItem"
+                android:text="@string/soy_allergy"
+                android:layout_marginLeft="@dimen/activity_vertical_margin"
+                android:layout_below="@+id/egg_allergy"/>
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/egg_allergy"
+                android:onClick="selectItem"
+                android:text="@string/egg_allergy"
+                android:layout_marginLeft="@dimen/activity_vertical_margin"
+                android:layout_below="@+id/peanut_allergy"/>
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/shellfish_allergy"
+                android:onClick="selectItem"
+                android:text="@string/shellfish_allergy"
+                android:layout_marginLeft="@dimen/activity_vertical_margin"
+                android:layout_below="@+id/fish_allergy"/>
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/fish_allergy"
+                android:onClick="selectItem"
+                android:text="@string/fish_allergy"
+                android:layout_marginLeft="@dimen/activity_vertical_margin"
+                android:layout_below="@+id/soy_allergy"/>
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/shrimp_allergy"
+                android:onClick="selectItem"
+                android:text="@string/shrimp_allergy"
+                android:layout_marginLeft="@dimen/activity_vertical_margin"
+                android:layout_below="@+id/shellfish_allergy"/>
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/lactose_intolerant"
+                android:onClick="selectItem"
+                android:text="@string/lactose_intolerant"
+                android:layout_marginLeft="@dimen/activity_vertical_margin"
+                android:layout_below="@+id/gluten_free"/>
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/kosher_only"
+                android:onClick="selectItem"
+                android:text="@string/kosher_only"
+                android:layout_marginLeft="@dimen/activity_vertical_margin"
+                android:layout_centerVertical="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="13dp" />
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/lacto_ovo_vegetarian"
+                android:onClick="selectItem"
+                android:text="@string/lacto_ovo_vegetarian"
+                android:layout_marginLeft="@dimen/activity_vertical_margin"
+                android:layout_below="@+id/ovo_vegetarian"/>
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/diabetes"
+                android:onClick="selectItem"
+                android:text="@string/diabetes"
+                android:layout_marginLeft="@dimen/activity_vertical_margin"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="15dp" />
+        </TableRow>
+
+
+    </TableLayout>
+
+    <Button
+        android:text="@android:string/cancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button6"
+        android:onClick="cancels"
+        android:background="@drawable/textinputborders2"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="Save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button7"
+        android:onClick="saves"
+        android:background="@drawable/textinputborders2"
+        android:layout_above="@+id/button6"
+        android:layout_alignStart="@+id/button6" />
+
+
+</RelativeLayout>

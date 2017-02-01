@@ -1,0 +1,26 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/back"
+    tools:context="com.ina.ina.DetailedViewFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <com.github.mikephil.charting.charts.PieChart
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/idPieChart"
+        android:layout_gravity="center">
+    </com.github.mikephil.charting.charts.PieChart>
+
+    <TextView
+        android:layout_width="184dp"
+        android:layout_height="wrap_content"
+        android:text="Nutrition Chart"
+        android:textColor="@color/Dark"
+        android:textSize="25sp"
+        android:id="@+id/textNutrition"
+        android:layout_gravity="center_horizontal|top" />
+
+</FrameLayout>

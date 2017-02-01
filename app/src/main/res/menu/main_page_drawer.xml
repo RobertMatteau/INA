@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_scanner"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Scanner" />
+        <item
+            android:id="@+id/nav_detailed_view"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Detailed View" />
+        <item
+            android:id="@+id/nav_enter_informatio"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Enter Information" />
+        <item
+            android:id="@+id/nav_meal_plan"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Meal Plan" />
+    </group>
+
+    <item android:title = "Specific Information">
+        <menu>
+            <item
+                android:id="@+id/nav_protein"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="Protein" />
+            <item
+                android:id="@+id/nav_fats"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="Fats" />
+            <item
+                android:id="@+id/nav_vitamins"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="Vitamins" />
+            <item
+                android:id="@+id/nav_minerals"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="Minerals" />
+
+            <item
+                android:id="@+id/nav_calories"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="Calories" />
+        </menu>
+    </item>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Send" />
+        </menu>
+    </item>
+
+</menu>
