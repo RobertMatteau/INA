@@ -35,7 +35,7 @@
                 android:id="@+id/auto"
                 android:hint=""
                 android:layout_weight="1"
-                android:popupBackground="@color/Dark">
+                android:popupBackground="#FFA500">
 
                 <requestFocus/>
 
