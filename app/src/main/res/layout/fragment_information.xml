@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back"
+    android:background="#FFFFFF"
     tools:context="com.ina.ina.InformationFragment">
 
     <LinearLayout
@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Enter Food Eaten"
-            android:textColor="@color/Dark"
+            android:textColor="#FFA500"
             android:textSize="25dp"
             android:id="@+id/textFood"
             android:layout_centerHorizontal="true"
@@ -33,7 +33,7 @@
                 android:inputType="textPersonName"
                 android:ems="10"
                 android:id="@+id/auto"
-                android:hint="AutoComplete TextView"
+                android:hint=""
                 android:layout_weight="1"
                 android:popupBackground="@color/Dark">
 

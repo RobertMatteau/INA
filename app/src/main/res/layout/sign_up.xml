@@ -7,167 +7,512 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/back"
+    android:background="#FFFFFF"
     tools:context="com.ina.ina.SignUpActivity">
 
-
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sign Up"
-            android:textColor="@color/Dark"
-            android:textSize="25dp"
-            android:id="@+id/textNutrition"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/editText"
-        android:layout_marginTop="43dp"
         android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/textView"
-        android:layout_alignStart="@+id/editText3" />
+        android:layout_alignParentStart="true">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/Box2"
-        android:id="@+id/textView"
-        android:textSize="20sp"
-        android:textColor="#000000"
-        android:layout_below="@+id/editText"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="30dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/Box1"
-        android:id="@+id/textView2"
-        android:textColor="#000000"
-        android:textIsSelectable="false"
-        android:textSize="20sp"
-        android:layout_alignBaseline="@+id/editText"
-        android:layout_alignBottom="@+id/editText"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:ems="10"
-        android:id="@+id/editText2"
-        android:layout_alignTop="@+id/textView"
-        android:layout_alignEnd="@+id/editText"
-        android:layout_toEndOf="@+id/textView3" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/Box3"
-        android:id="@+id/textView3"
-        android:textSize="20sp"
-        android:textColor="#000000"
-        android:layout_marginTop="21dp"
-        android:layout_below="@+id/editText2"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="date"
-        android:ems="10"
-        android:id="@+id/editText3"
-        android:layout_alignTop="@+id/textView3"
-        android:layout_alignParentEnd="true"
-        android:layout_toEndOf="@+id/textView3" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="@string/Box4"
-        android:id="@+id/textView4"
-        android:textColor="#000000"
-        android:textSize="20sp"
-        android:layout_below="@+id/editText3"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="34dp" />
-
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/checkBox"
-        android:layout_below="@+id/textView4"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="36dp"
-        android:checked="false" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/M"
-        android:id="@+id/textView5"
-        android:layout_alignBottom="@+id/checkBox"
-        android:layout_toEndOf="@+id/checkBox"
-        android:textColor="#000000" />
-
-    <CheckBox
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/checkBox2"
-        android:layout_alignBottom="@+id/textView5"
-        android:layout_toEndOf="@+id/textView2" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/F"
-        android:id="@+id/textView6"
-        android:layout_alignBottom="@+id/checkBox2"
-        android:layout_toEndOf="@+id/checkBox2"
-        android:textColor="#000000" />
-
-
-        <Button
-            style="?android:attr/buttonStyleSmall"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Sign Up"
-            android:background="@drawable/textinputborders2"
-            android:id="@+id/button4"
-            android:onClick="signUp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true" />
-
-        <Button
-            android:text="Allergies and Diseases"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="diseases"
-            android:background="@drawable/textinputborders2"
-            android:layout_alignParentBottom="true"
             android:layout_alignParentStart="true"
-            android:layout_marginBottom="62dp"
-            android:id="@+id/button8" />
+            android:layout_alignParentTop="true"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/textNutrition"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/profile_character"
+                android:textColor="#FFA500"
+                android:textSize="25dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true" />
+
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/editText3"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="43dp"
+                android:layout_toEndOf="@+id/textView8"
+                android:ems="10"
+                android:inputType="number" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText"
+                android:layout_marginTop="21dp"
+                android:text="@string/Box2"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/editText"
+                android:layout_alignBottom="@+id/editText"
+                android:layout_alignParentStart="true"
+                android:text="@string/Box1"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#000000"
+                android:textIsSelectable="false"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/editText2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/checkBox222"
+                android:layout_alignStart="@+id/editText"
+                android:layout_alignTop="@+id/textView"
+                android:ems="10"
+                android:inputType="number" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/editText2"
+                android:layout_marginTop="21dp"
+                android:text="@string/Box3"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/editText3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignEnd="@+id/checkBox222"
+                android:layout_alignTop="@+id/textView3"
+                android:layout_toEndOf="@+id/textView8"
+                android:ems="10"
+                android:inputType="date" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Box4"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#000000"
+                android:textSize="20sp"
+                android:layout_marginTop="22dp"
+                android:layout_below="@+id/editText3"
+                android:layout_alignParentStart="true" />
+
+            <CheckBox
+                android:id="@+id/checkBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:layout_alignBottom="@+id/textView4"
+                android:layout_alignStart="@+id/checkBox11" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/M"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000000"
+                android:layout_alignBaseline="@+id/textView4"
+                android:layout_alignBottom="@+id/textView4"
+                android:layout_toEndOf="@+id/checkBox" />
+
+            <CheckBox
+                android:id="@+id/checkBox2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/textView8"
+                android:layout_toStartOf="@+id/textView6" />
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/F"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000000"
+                android:layout_above="@+id/textView8"
+                android:layout_alignStart="@+id/checkBox222" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="20dp"
+                android:text="Pregnant"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_below="@+id/textView4"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <CheckBox
+                android:id="@+id/checkBox11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:layout_alignBaseline="@+id/textView8"
+                android:layout_alignBottom="@+id/textView8"
+                android:layout_toStartOf="@+id/checkBox111" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/checkBox11"
+                android:layout_toEndOf="@+id/checkBox11"
+                android:text="Yes"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000000" />
+
+            <CheckBox
+                android:id="@+id/checkBox22"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/textView8"
+                android:layout_alignStart="@+id/checkBox2" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/checkBox22"
+                android:layout_toEndOf="@+id/checkBox22"
+                android:text="No"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/textView8"
+                android:layout_marginTop="23dp"
+                android:text="Breastfeeding"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <CheckBox
+                android:id="@+id/checkBox111"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/textView11"
+                android:layout_alignBottom="@+id/textView11"
+                android:layout_marginStart="11dp"
+                android:layout_toEndOf="@+id/textView11"
+                android:checked="false" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/checkBox111"
+                android:layout_toEndOf="@+id/checkBox111"
+                android:text="Yes"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000000" />
+
+            <CheckBox
+                android:id="@+id/checkBox222"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/textView12"
+                android:layout_marginStart="13dp"
+                android:layout_toEndOf="@+id/textView12" />
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/checkBox222"
+                android:layout_toEndOf="@+id/checkBox222"
+                android:text="No"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView10"
+                android:layout_marginTop="60dp"
+                android:text="Select Activity Level"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000000" />
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinDiet"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_toEndOf="@+id/textView15"
+                android:layout_alignTop="@+id/textView15" />
 
 
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginEnd="79dp"
+                android:layout_marginTop="128dp"
+                android:text="cm"
+                android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/textView20"
+                android:layout_below="@+id/textView20"
+                android:layout_marginTop="41dp"
+                android:text="kg"
+                android:textAppearance="@android:style/TextAppearance.Material.Medium" />
+
+            <TextView
+                android:id="@+id/textDiet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/profile_diet"
+                android:textColor="#FFA500"
+                android:textSize="25dp"
+                android:layout_below="@+id/spinDiet"
+                android:layout_marginTop="15dp"
+                android:layout_alignParentStart="true" />
+
+            <TextView
+                android:id="@+id/textNut"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="20dp"
+                android:text="Nut Free Food"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_below="@+id/textDiet"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <CheckBox
+                android:id="@+id/checkNutY"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:layout_alignBaseline="@+id/textNut"
+                android:layout_alignBottom="@+id/textNut"
+                android:layout_toEndOf="@+id/textNut"
+                android:layout_marginLeft="40dp"/>
+
+            <TextView
+                android:id="@+id/nutyes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/checkNutY"
+                android:layout_toEndOf="@+id/checkNutY"
+                android:text="Yes"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000000" />
+
+            <CheckBox
+                android:id="@+id/checkNutX"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/textNut"
+                android:layout_alignStart="@+id/checkBox222"
+                android:layout_marginLeft="20dp"/>
+
+            <TextView
+                android:id="@+id/nutno"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/checkNutX"
+                android:layout_toEndOf="@+id/checkNutX"
+                android:text="No"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/textMeat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="20dp"
+                android:text="Meat Free Food"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_below="@+id/textNut"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <CheckBox
+                android:id="@+id/checkMeatY"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:layout_alignBaseline="@+id/textMeat"
+                android:layout_alignBottom="@+id/textMeat"
+                android:layout_alignLeft="@+id/checkNutY" />
+
+            <TextView
+                android:id="@+id/meatyes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/checkMeatY"
+                android:layout_toEndOf="@+id/checkMeatY"
+                android:text="Yes"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000000" />
+
+            <CheckBox
+                android:id="@+id/checkMeatN"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/textMeat"
+                android:layout_alignStart="@+id/checkNutX" />
+
+            <TextView
+                android:id="@+id/meatno"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/checkMeatN"
+                android:layout_toEndOf="@+id/checkMeatN"
+                android:text="No"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/textLactose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="20dp"
+                android:text="Lactose Free Food"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_below="@+id/textMeat"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <CheckBox
+                android:id="@+id/checkLactoseY"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:layout_alignBaseline="@+id/textLactose"
+                android:layout_alignBottom="@+id/textLactose"
+                android:layout_alignLeft="@+id/checkMeatY" />
+
+            <TextView
+                android:id="@+id/lactoseY"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/checkLactoseY"
+                android:layout_toEndOf="@+id/checkLactoseY"
+                android:text="Yes"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000000" />
+
+            <CheckBox
+                android:id="@+id/checkLactoseN"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/textLactose"
+                android:layout_alignStart="@+id/checkMeatN" />
+
+            <TextView
+                android:id="@+id/lactoseN"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/checkLactoseN"
+                android:layout_toEndOf="@+id/checkLactoseN"
+                android:text="No"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/textGluten"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="20dp"
+                android:text="Gluten Free Food"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_below="@+id/textLactose"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <CheckBox
+                android:id="@+id/checkGlutenY"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:layout_alignBaseline="@+id/textGluten"
+                android:layout_alignBottom="@+id/textGluten"
+                android:layout_alignLeft="@+id/checkLactoseY" />
+
+            <TextView
+                android:id="@+id/glutenyes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/checkGlutenY"
+                android:layout_toEndOf="@+id/checkGlutenY"
+                android:text="Yes"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000000" />
+
+            <CheckBox
+                android:id="@+id/checkGlutenN"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/textGluten"
+                android:layout_alignStart="@+id/checkMeatN" />
+
+            <TextView
+                android:id="@+id/glutenno"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/checkGlutenN"
+                android:layout_toEndOf="@+id/checkGlutenN"
+                android:text="No"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#000000" />
+
+            <Button
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sign Up"
+                android:background="@drawable/textinputborders2"
+                android:id="@+id/button4"
+                android:onClick="signUp"
+                android:layout_below="@+id/textGluten"
+                android:layout_marginTop="15dp"
+                android:layout_alignParentStart="true" />
+
+
+        </RelativeLayout>
+
+
+
+    </ScrollView>
+
+
 
 
 </RelativeLayout>

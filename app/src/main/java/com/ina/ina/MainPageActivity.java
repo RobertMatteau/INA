@@ -264,7 +264,7 @@ public class MainPageActivity extends AppCompatActivity
         }
         if(id == R.id.profile)
         {
-            Intent i2 = new Intent(this, ProfileActivity.class);
+            Intent i2 = new Intent(this, SignUpActivity.class);
             startActivityForResult(i2, 1);
             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
         }

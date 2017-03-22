@@ -35,9 +35,22 @@ public class SignUpActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_up);
 
+        Spinner spinner = (Spinner) findViewById(R.id.spinDiet);
+        ArrayAdapter<CharSequence>adapter = ArrayAdapter.createFromResource(this, R.array.activity_level, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
     }
 
+    public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
 
+    }
+
+    public void selectItem(View view) {
+        boolean checked = ((CheckBox) view).isChecked();
+
+
+    }
 
     public void diseases(View v)
     {
