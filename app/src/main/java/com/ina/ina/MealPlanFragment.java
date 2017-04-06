@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,6 +18,8 @@ import android.widget.Toast;
 import android.widget.AdapterView;
 import android.widget.TextView;
 import android.view.View;
+
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.Set;
 import android.app.AlertDialog;
@@ -27,9 +30,17 @@ import android.content.SharedPreferences;
 import android.app.Activity;
 
 
+import com.ina.ina.Database.FoodDatabase;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 
 /**
@@ -85,6 +96,13 @@ public class MealPlanFragment extends Fragment {
         return fragment;
     }
 
+    String url = "http://diet.uoitscheduler.com/base_foods_api?user_id=32";
+    String url2 = "http://diet.uoitscheduler.com/remove_food_api?";
+    String url3 = "http://diet.uoitscheduler.com/add_food_api?";
+    String baseFoods;
+    private FoodDatabase food;
+    Context context;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,7 +111,42 @@ public class MealPlanFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
+        food = new FoodDatabase(getActivity());
         setHasOptionsMenu(true);
+        OkHttpClient client = new OkHttpClient();
+
+        Request baseFoodRequest = new Request.Builder().url(url).build();
+        try{
+            client.newCall(baseFoodRequest).enqueue(new Callback(){
+                @Override
+                public void onFailure(Call call, IOException e){e.printStackTrace();}
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException{
+                    if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+
+                    baseFoods = response.body().string();
+                    Log.d("test", baseFoods);
+
+                }
+            });
+        }catch(Exception e){
+
+        }
+        try {
+            Thread.sleep(1500);
+            Log.d("tester", "it worked");
+        }catch(InterruptedException e){
+            Log.d("Stoped", "There was an interrupt");
+        }
+
+        String[] food_ids = baseFoods.split("[,]");
+
+        String[] split1 = food_ids[0].split("[\"]");
+
+        food_ids[0] = split1[3];
+        Log.d("final test 1", food_ids[0]);
+        Log.d("final test 1", food_ids[1]);
 
         //shoppingList = getArrayVal(getActivity().getApplicationContext());
         shoppingList = new ArrayList<>();
@@ -101,7 +154,12 @@ public class MealPlanFragment extends Fragment {
         //amount = new ArrayList<>();
         //stores = new ArrayList<>();
 
-        Collections.addAll(shoppingList, "Whole Wheat Sliced Bread, $0.21, 2 slices, Walmart", "Orange Juice, $0.50, 1 Cup, Walmart", "Tofu, Silken, Raw, $0.25, 100g, No Frills", "Chicken Breast, Cooked, $0.70, 50g, Metro", "Milk, Skim, $0.30, 1 Cup, No Frills", "Banana, Raw, $0.60, 2 Whole, Walmart");
+        for(int i = 0; i < food_ids.length; i++){
+            String item = food.getMealPlanItem(food_ids[i]);
+            shoppingList.add(item);
+        }
+
+        //Collections.addAll(shoppingList, "Whole Wheat Sliced Bread, $0.21, 2 slices, Walmart", "Orange Juice, $0.50, 1 Cup, Walmart", "Tofu, Silken, Raw, $0.25, 100g, No Frills", "Chicken Breast, Cooked, $0.70, 50g, Metro", "Milk, Skim, $0.30, 1 Cup, No Frills", "Banana, Raw, $0.60, 2 Whole, Walmart");
         //Collections.addAll(cost, "$0.21", "$0.50", "$0.25", "$0.70", "$0.30", "$0.60");
         //Collections.addAll(amount, "2 slices", "1 Cup", "100g", "50g", "1 Cup", "2 Whole");
         //Collections.addAll(stores, "Walmart", "Walmart", "NoFrills", "Metro", "No Frills", "Walmart");
@@ -133,7 +191,7 @@ public class MealPlanFragment extends Fragment {
             public void onItemClick(AdapterView parent, View view, final int position, long id) {
                 String selectedItem = ((TextView) view).getText().toString();
                 if (selectedItem.trim().equals(shoppingList.get(position).trim())) {
-                    removeElement(selectedItem, position);
+                    removeElement(selectedItem, position); //alter here
                 } else {
                     Toast.makeText(getActivity().getApplicationContext(),"Error Removing Element", Toast.LENGTH_LONG).show();
                 }
@@ -185,10 +243,54 @@ public class MealPlanFragment extends Fragment {
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        shoppingList.add(preferredCase(input.getText().toString()));
-                        Collections.sort(shoppingList);
-                        storeArrayVal(shoppingList, getActivity().getApplicationContext());
-                        lv.setAdapter(adapter);
+                        String nameInput = input.getText().toString();
+                        Log.d("name test", nameInput);
+
+                        String foodID = food.getFoodId(nameInput);
+                        Log.d("check id", foodID);
+                        int checkID = Integer.parseInt(foodID);
+
+                        if(checkID == 0){
+                            Toast.makeText(getActivity(), "This food item is not registered in our database", Toast.LENGTH_LONG).show();
+                        }
+                        else {
+                            OkHttpClient client = new OkHttpClient();
+                            String addURL = url3 + "food_id=" + checkID + "&user_id=32";
+
+                            Request baseFoodRequest = new Request.Builder().url(addURL).build();
+                            try{
+                                client.newCall(baseFoodRequest).enqueue(new Callback(){
+                                    @Override
+                                    public void onFailure(Call call, IOException e){e.printStackTrace();}
+
+                                    @Override
+                                    public void onResponse(Call call, Response response) throws IOException{
+                                        if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+                                        Log.d("test", "It Worked!!!");
+                                    }
+                                });
+                            }catch(Exception e){
+
+                            }
+                            try {
+                                Thread.sleep(2500);
+                                Log.d("tester", "it worked again");
+                            }catch(InterruptedException e){
+                                Log.d("Stoped", "There was an interrupt");
+                            }
+
+                            String addCost = food.getFoodCost(foodID);
+                            String addAmount = food.getFoodAmount(input.getText().toString());
+
+
+
+                            String addItem = input.getText().toString() + ", $" + addCost + " per: "+ addAmount + " grams";
+
+                            shoppingList.add(addItem);
+                            Collections.sort(shoppingList);
+                            storeArrayVal(shoppingList, getActivity().getApplicationContext());
+                            lv.setAdapter(adapter);
+                        }
                     }
                 });
                 builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
@@ -233,12 +335,42 @@ public class MealPlanFragment extends Fragment {
         return new ArrayList<String>(tempSet);
     }
 
-    public void removeElement(String selectedItem, final int position){
+    public void removeElement(final String selectedItem, final int position){
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Remove " + selectedItem + "?");
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                String[] food_info = selectedItem.split("[,]");
+                String foodName = food_info[0];
+                Log.d("name test", foodName);
+                String removeID = food.getFoodId(foodName);
+
+                OkHttpClient client = new OkHttpClient();
+                String removeURL = url2 + "food_id=" + removeID + "&user_id=32";
+
+                Request baseFoodRequest = new Request.Builder().url(removeURL).build();
+                try{
+                    client.newCall(baseFoodRequest).enqueue(new Callback(){
+                        @Override
+                        public void onFailure(Call call, IOException e){e.printStackTrace();}
+
+                        @Override
+                        public void onResponse(Call call, Response response) throws IOException{
+                            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+                            Log.d("test", "It Worked!!!");
+                        }
+                    });
+                }catch(Exception e){
+
+                }
+                try {
+                    Thread.sleep(1500);
+                    Log.d("tester", "it worked again");
+                }catch(InterruptedException e){
+                    Log.d("Stoped", "There was an interrupt");
+                }
+
                 shoppingList.remove(position);
                 Collections.sort(shoppingList);
                 storeArrayVal(shoppingList, getActivity().getApplicationContext());

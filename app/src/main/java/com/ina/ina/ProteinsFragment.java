@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
@@ -37,8 +38,10 @@ public class ProteinsFragment extends Fragment {
     private TextView tvX, tvY;
     BarChart barChart;
 
-    private float[] yData = {30, 40, 50, 60, 70};
-    private String[] xData = {"A", "B", "C", "D", "E"};
+    float protien = 1;
+
+   //private float[] yData = {30};
+    //private String[] xData = {"Total Protein"};
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -75,6 +78,8 @@ public class ProteinsFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        protien = getArguments().getFloat("protein");
+
     }
 
     @Override
@@ -87,8 +92,53 @@ public class ProteinsFragment extends Fragment {
         //tvX = (TextView) rootView.findViewById(R.id.tvXMax);
         //tvY = (TextView) rootView.findViewById(R.id.tvYMax);
 
-        barChart.setDescription("Graph");
-        addDataSet();
+        Legend l = barChart.getLegend();
+        l.setEnabled(true);
+        l.setFormSize(10f); // set the size of the legend forms/shapes
+        l.setForm(Legend.LegendForm.CIRCLE); // set what type of form/shape should be used
+        l.setPosition(Legend.LegendPosition.ABOVE_CHART_CENTER);
+        l.setTextSize(11f);
+        l.setTextColor(Color.BLACK);
+        l.setXEntrySpace(5f); // set the space between the legend entries on the x-axis
+        l.setYEntrySpace(3f); // set the space between the legend entries on the y-axis
+        l.setWordWrapEnabled(true);
+
+        YAxis leftaxis = barChart.getAxisLeft();
+        leftaxis.setSpaceTop(20f);
+        YAxis rightaxis = barChart.getAxisRight();
+        rightaxis.setSpaceTop(20f);
+
+        barChart.getXAxis().setDrawLabels(false);
+        // set custom labels and colors
+        //change set names to be proper
+        l.setCustom(new int[] {Color.rgb(255, 167, 38)}, new String[] { "Proteins"});
+
+
+        //set int values for nutrients
+        //int value = 110;
+
+
+        //put them in like value is
+        ArrayList<BarEntry> entries = new ArrayList<>();
+        entries.add(new BarEntry(1f, protien));
+
+        BarDataSet dataset = new BarDataSet(entries, "Calls");
+
+        //ArrayList<String> labels = new ArrayList<String>();
+        //labels.add("January");
+        //labels.add("Febuary");
+        //labels.add("March");
+        //labels.add("April");
+        //labels.add("May");
+        //labels.add("June");
+
+        BarData data = new BarData(dataset);
+
+        barChart.setData(data);
+        barChart.setDescription("");
+        dataset.setColors(new int[] {Color.rgb(255, 167, 38)});
+        barChart.animateY(5000);
+
 
         //ArrayList<String> thevalues = new ArrayList<>();
         //.add("Vitamin A");
@@ -109,10 +159,10 @@ public class ProteinsFragment extends Fragment {
         //barChart.setOnChartValueSelectedListener(this);
         //barChart.setData(theData);
 
-        barChart.setTouchEnabled(true);
-        barChart.setDragEnabled(true);
-        barChart.setScaleXEnabled(true);
-        barChart.setScaleYEnabled(true);
+        // barChart.setTouchEnabled(true);
+        // barChart.setDragEnabled(true);
+        // barChart.setScaleXEnabled(true);
+        // barChart.setScaleYEnabled(true);
 
 
         return rootView;
@@ -142,7 +192,7 @@ public class ProteinsFragment extends Fragment {
         mListener = null;
     }
 
-    private void addDataSet()
+    /*private void addDataSet()
     {
         ArrayList<BarEntry> yEntrys = new ArrayList<>();
         ArrayList<String> xEntrys = new ArrayList<>();

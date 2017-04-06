@@ -10,17 +10,21 @@
     android:background="#FFFFFF"
     tools:context="com.ina.ina.Main">
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:id="@+id/lay1">
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/login"
         android:id="@+id/button2"
         android:onClick="loginClick"
-        android:background="@drawable/textinputborders2"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true" />
+        android:background="@drawable/textinputborders2" />
 
-    <Button
+    <!--<Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/signup"
@@ -30,34 +34,61 @@
         android:background="@drawable/textinputborders2"
         android:layout_alignParentTop="true"
         android:layout_toStartOf="@+id/button2" />
+    -->
+    </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@+id/lay1"
+        android:layout_marginTop="35dp"
+        android:id="@+id/lay2">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
     <ImageView
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:maxHeight="150dp"
-        android:scaleType="fitCenter"
         android:id="@+id/imageView"
-        android:src="@drawable/logo"
-        android:layout_marginTop="32dp"
-        android:layout_below="@+id/button3"
-        android:layout_centerHorizontal="true" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="A nutitrition help app designed to assist you with better dieting"
-        android:id="@+id/textView5"
+        android:adjustViewBounds="true"
+        android:layout_gravity="center"
+        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:layout_below="@+id/textView4"/>
+        android:maxHeight="150dp"
+        android:src="@drawable/logo" />
+        </RelativeLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:text="About Us"
-        android:id="@+id/textView4"
-        android:layout_below="@+id/imageView"
-        android:layout_centerHorizontal="true" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="20dp"
+            android:text="A nutitrition help app designed to assist you with better dieting"
+            android:id="@+id/textView5"
+            android:gravity="center_horizontal"
+           />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:text="About Us"
+            android:id="@+id/textView4"
+            android:layout_above="@+id/textView5"
+            android:gravity="center_horizontal" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+
 
 </RelativeLayout>

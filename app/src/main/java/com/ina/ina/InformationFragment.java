@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,10 +28,20 @@ import android.widget.Toast;
 import com.ina.ina.Data.Food;
 import com.ina.ina.Database.FoodDatabase;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 
 /**
@@ -70,7 +81,7 @@ public class InformationFragment extends Fragment {
     Food nutriend;
 
 
-    double vita, vitd,vite,vitk,vitc,thia,ribo,nia,vitb6,fol,vitb12,panth,chol,calc,copp,fluor,iron,magne,manga,phos,sele,zinc,pota,sodi,carb,tpro,tfib;
+    double vita, vitd,vite,vitk,vitc,thia,ribo,nia,vitb6,fol,vitb12,panth,chol,calc,copp,fluor,iron,magne,manga,phos,sele,zinc,pota,sodi,carb,tpro,tfib, ener, fat;
 
     double cost;
 
@@ -174,11 +185,12 @@ public class InformationFragment extends Fragment {
         i = (TextView)rootView.findViewById(R.id.ediblefood_textview );
 
 
-        final ArrayList<Food> ediblefoodlist = food.getEdibleFood();
+        final ArrayList<Food> ediblefoodlist = food.getBasicFoodInfo();
 
-        final String[] ediblefoodsearch = new String[3994]; //3994
-        for(int i=0; i < 3994; i++){
+        final String[] ediblefoodsearch = new String[201]; //3994
+        for(int i=0; i < 201; i++){
             Food a = ediblefoodlist.get(i);
+            Log.d("test", a.getName());
 
             if (a == null){
                 break;
@@ -220,11 +232,6 @@ public class InformationFragment extends Fragment {
                 }*/
                 ch.add(a);
 
-
-
-
-
-
                 //placeholder[counter]=place[counter];
 
 
@@ -236,8 +243,70 @@ public class InformationFragment extends Fragment {
 
                 Food foodinfo = food.getFoodByName(ediblefoodlist, ch.get(counter) );
 
+                String id = food.getFoodId(a);
+
                 nutriend = ediblefoodlist.get(counter);
 
+                String url = "http://diet.uoitscheduler.com/food_api?food_id=" + id;
+                Request request = new Request.Builder().url(url).build();
+                OkHttpClient client = new OkHttpClient();
+
+                try{
+                    client.newCall(request).enqueue(new Callback(){
+                        @Override
+                        public void onFailure(Call call, IOException e) {e.printStackTrace();}
+
+                        @Override
+                        public void onResponse(Call call, Response response) throws IOException{
+                            if(!response.isSuccessful()){
+                                throw new IOException("Unexpected code " + response);
+                            }
+                            String jsonString = response.body().string();
+                            try {
+                                JSONObject foodJson = new JSONObject(jsonString);
+                                nutriend.protein = Double.parseDouble(foodJson.getString("protein"));
+                                nutriend.carbohydrate = Double.parseDouble(foodJson.getString("carbohydrate"));
+                                nutriend.fibre = Double.parseDouble(foodJson.getString("fiber"));
+                                nutriend.calcium = Double.parseDouble(foodJson.getString("calcium"));
+                                nutriend.iron = Double.parseDouble(foodJson.getString("iron"));
+                                nutriend.magnesium = Double.parseDouble(foodJson.getString("magnesium"));
+                                nutriend.phosphorus = Double.parseDouble(foodJson.getString("phosphorus"));
+                                nutriend.potassium = Double.parseDouble(foodJson.getString("potassium"));
+                                nutriend.sodium = Double.parseDouble(foodJson.getString("sodium"));
+                                nutriend.zinc = Double.parseDouble(foodJson.getString("zinc"));
+                                nutriend.copper = Double.parseDouble(foodJson.getString("copper"));
+                                nutriend.fluoride = Double.parseDouble(foodJson.getString("fluoride"));
+                                nutriend.maganese = Double.parseDouble(foodJson.getString("manganese"));
+                                nutriend.selenium = Double.parseDouble(foodJson.getString("selenium"));
+                                nutriend.vitaminA = Double.parseDouble(foodJson.getString("vitaminA"));
+                                nutriend.vitaminE = Double.parseDouble(foodJson.getString("vitaminE"));
+                                nutriend.vitaminD = Double.parseDouble(foodJson.getString("vitaminD"));
+                                nutriend.vitaminC = Double.parseDouble(foodJson.getString("vitaminC"));
+                                nutriend.thiamin = Double.parseDouble(foodJson.getString("thiamin"));
+                                nutriend.riboflavin = Double.parseDouble(foodJson.getString("riboflavin"));
+                                nutriend.niacin = Double.parseDouble(foodJson.getString("niacin"));
+                                nutriend.pantothenicAcid = Double.parseDouble(foodJson.getString("pantothenicAcid"));
+                                nutriend.choline = Double.parseDouble(foodJson.getString("choline"));
+                                nutriend.vitaminK = Double.parseDouble(foodJson.getString("vitaminK"));
+                                nutriend.vitaminB12 = 0;
+                                nutriend.folate = 0;
+                                nutriend.vitaminB = 0;
+                                nutriend.fat = Double.parseDouble(foodJson.getString("fat"));
+                                nutriend.energy = Double.parseDouble(foodJson.getString("energy"));
+                            }catch(JSONException e){
+                                Log.d("Error", "Json String Error");
+                            }
+                        }
+                    });
+                }
+                catch(Exception e){
+
+                }
+                try {
+                    Thread.sleep(1500);
+                }catch(InterruptedException e){
+                    Log.d("Stopped", "the first interrupt");
+                }
 
                 vita += nutriend.getVitaminA();
                 vitb6 += nutriend.getVitaminB();
@@ -266,25 +335,12 @@ public class InformationFragment extends Fragment {
                 carb += nutriend.getCarbohydrate();
                 tpro += nutriend.getProtein();
                 tfib += nutriend.getFibre();
-
-
-
-
+                ener += nutriend.getEnergy();
+                fat += nutriend.getFat();
 
                 lv.setAdapter(foodnames);
 
-
-
-
-
                 counter++;
-
-
-
-
-
-
-
             }
         });
 

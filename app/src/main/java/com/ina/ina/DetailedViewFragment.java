@@ -156,12 +156,6 @@ public class DetailedViewFragment extends Fragment {
 
         //add colors to dataset
         ArrayList<Integer> colors = new ArrayList<>();
-        //colors.add(Color.BLUE);
-        //colors.add(Color.RED);
-        //colors.add(Color.GREEN);
-        //colors.add(Color.CYAN);
-        //colors.add(Color.MAGENTA);
-        //colors.add(Color.GRAY);
         for (int c: ColorTemplate.JOYFUL_COLORS)
         {
             colors.add(c);
@@ -202,17 +196,6 @@ public class DetailedViewFragment extends Fragment {
 
 
     }
-
-    //@Override
-    //public void onAttach(Context context) {
-    //    super.onAttach(context);
-    //    if (context instanceof OnFragmentInteractionListener) {
-     //       mListener = (OnFragmentInteractionListener) context;
-    //    } else {
-    //        throw new RuntimeException(context.toString()
-    //                + " must implement OnFragmentInteractionListener");
-    //    }
-    //}
 
     @Override
     public void onDetach() {

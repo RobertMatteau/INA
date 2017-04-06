@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
@@ -34,11 +35,15 @@ public class VitaminsFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    private TextView tvX, tvY;
     BarChart barChart;
 
-    private float[] yData = {30, 40, 50, 60, 70};
-    private String[] xData = {"A", "B", "C", "D", "E"};
+    float thiamin = 0;
+    float vitaminA = 0;
+    float vitaminC = 0;
+    float vitaminE = 0;
+    float riboflavin = 0;
+    float niacin = 0;
+    float pantothenicAcid = 0;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -75,6 +80,15 @@ public class VitaminsFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+
+        thiamin = getArguments().getFloat("thiamin");
+        vitaminA = getArguments().getFloat("vitaminA");
+        vitaminC = getArguments().getFloat("vitaminC");
+        vitaminE = getArguments().getFloat("vitaminE");
+        riboflavin = getArguments().getFloat("riboflavin");
+        niacin = getArguments().getFloat("niacin");
+        pantothenicAcid = getArguments().getFloat("pantothenicAcid");
+
     }
 
     @Override
@@ -83,38 +97,59 @@ public class VitaminsFragment extends Fragment {
         // Inflate the layout for this
         View rootView = inflater.inflate(R.layout.fragment_vitamins, container, false);
 
+        //do the values for the bar charts here
+
         barChart = (BarChart) rootView.findViewById(R.id.bargraph);
-        //tvX = (TextView) rootView.findViewById(R.id.tvXMax);
-        //tvY = (TextView) rootView.findViewById(R.id.tvYMax);
 
-        barChart.setDescription("Graph");
-        addDataSet();
+        Legend l = barChart.getLegend();
+        l.setEnabled(true);
+        l.setFormSize(10f); // set the size of the legend forms/shapes
+        l.setForm(Legend.LegendForm.CIRCLE); // set what type of form/shape should be used
+        l.setPosition(Legend.LegendPosition.ABOVE_CHART_CENTER);
+        l.setTextSize(11f);
+        l.setTextColor(Color.BLACK);
+        l.setXEntrySpace(5f); // set the space between the legend entries on the x-axis
+        l.setYEntrySpace(3f); // set the space between the legend entries on the y-axis
+        l.setWordWrapEnabled(true);
 
-        //ArrayList<String> thevalues = new ArrayList<>();
-        //.add("Vitamin A");
-        ////thevalues.add("Vitamin B");
-        //thevalues.add("Vitamin C");
-        //thevalues.add("Vitamin D");
+        YAxis leftaxis = barChart.getAxisLeft();
+        leftaxis.setSpaceTop(20f);
+        YAxis rightaxis = barChart.getAxisRight();
+        rightaxis.setSpaceTop(20f);
 
-        //BarDataset theData = new BarDataset(thevalues, "Values");
+        barChart.getXAxis().setDrawLabels(false);
 
-        //ArrayList<BarEntry> barEntries = new ArrayList<>();
-        //barEntries.add(new BarEntry(44f,0));
-        //barEntries.add(new BarEntry(88f,1));
-        //barEntries.add(new BarEntry(32f,2));
-        //barEntries.add(new BarEntry(56f,3));
-
-        //BarData barDataSet = new BarData();
-
-        //barChart.setOnChartValueSelectedListener(this);
-        //barChart.setData(theData);
-
-        barChart.setTouchEnabled(true);
-        barChart.setDragEnabled(true);
-        barChart.setScaleXEnabled(true);
-        barChart.setScaleYEnabled(true);
+        // set custom labels and colors
+        //change set names to be proper
+        l.setCustom(new int[] {Color.rgb(255, 167, 38),
+                Color.rgb(229, 57, 53), Color.rgb(244, 143, 177),
+                Color.rgb(234, 128, 252), Color.rgb(140, 158, 255),
+                Color.rgb(66, 165, 245), Color.rgb(24, 255, 255)}, new String[] { "Thiamin",
+                "Vitamin A", "Vitamin C", "Vitamin E", "Riboflavin", "Niacin" , "Pantothenic Acid"});
 
 
+        //put them in like value is
+        ArrayList<BarEntry> entries = new ArrayList<>();
+        entries.add(new BarEntry(0f, thiamin));
+        entries.add(new BarEntry(1f, vitaminA));
+        entries.add(new BarEntry(2f, vitaminC));
+        entries.add(new BarEntry(3f, vitaminE));
+        entries.add(new BarEntry(4f, riboflavin));
+        entries.add(new BarEntry(5f, niacin));
+        entries.add(new BarEntry(6f, pantothenicAcid));
+
+        BarDataSet dataset = new BarDataSet(entries, "Calls");
+
+        BarData data = new BarData(dataset);
+
+        barChart.setData(data);
+        barChart.setDescription("");
+        dataset.setColors(new int[] {Color.rgb(255, 167, 38),
+                Color.rgb(229, 57, 53), Color.rgb(244, 143, 177),
+                Color.rgb(234, 128, 252), Color.rgb(140, 158, 255),
+                Color.rgb(66, 165, 245), Color.rgb(24, 255, 255),
+                Color.rgb(29, 233, 182), Color.rgb(76, 175, 80)});
+        barChart.animateY(5000);
         return rootView;
     }
 
@@ -125,89 +160,10 @@ public class VitaminsFragment extends Fragment {
         }
     }
 
-    /*@Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }*/
-
     @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
-    }
-
-    private void addDataSet()
-    {
-        ArrayList<BarEntry> yEntrys = new ArrayList<>();
-        ArrayList<String> xEntrys = new ArrayList<>();
-
-        for(int i = 0; i < yData.length; i++)
-        {
-            yEntrys.add(new BarEntry(yData[i], i));
-        }
-
-        for(int i = 0; i < xData.length; i++)
-        {
-            xEntrys.add(xData[i]);
-        }
-
-        //create the data set
-        BarDataSet pieDataSet = new BarDataSet(yEntrys, "Nutrition");
-        pieDataSet.setValueTextSize(12);
-
-        //add colors to dataset
-        ArrayList<Integer> colors = new ArrayList<>();
-        //colors.add(Color.BLUE);
-        //colors.add(Color.RED);
-        //colors.add(Color.GREEN);
-        //colors.add(Color.CYAN);
-        //colors.add(Color.MAGENTA);
-        //colors.add(Color.GRAY);
-        for (int c: ColorTemplate.JOYFUL_COLORS)
-        {
-            colors.add(c);
-        }
-        for (int c: ColorTemplate.VORDIPLOM_COLORS)
-        {
-            colors.add(c);
-        }
-        for (int c: ColorTemplate.LIBERTY_COLORS)
-        {
-            colors.add(c);
-        }
-        for (int c: ColorTemplate.COLORFUL_COLORS)
-        {
-            colors.add(c);
-        }
-        for (int c: ColorTemplate.PASTEL_COLORS)
-        {
-            colors.add(c);
-        }
-
-
-        pieDataSet.setColors(colors);
-
-        //add legend to chart
-        Legend legend = barChart.getLegend();
-        legend.setForm(Legend.LegendForm.CIRCLE);
-        legend.setPosition(Legend.LegendPosition.RIGHT_OF_CHART);
-        legend.setTextSize(12f);
-        legend.setTextColor(Color.BLACK);
-        legend.setCustom(ColorTemplate.JOYFUL_COLORS, xData);
-
-
-        //create pie data object
-        BarData pieData = new BarData(pieDataSet);
-        barChart.setData(pieData);
-        barChart.invalidate();
-
-
     }
 
     /**

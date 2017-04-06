@@ -35,22 +35,24 @@ public class Food {
     public double carbohydrate;
     public double protein;
     public double fibre;
+    public double energy;
+    public double fat;
 
     public Food(int id, String name, double cost, double vitaminA, double vitaminD, double vitaminE,
                 double vitaminK, double vitaminC, double thiamin, double riboflavin, double niacin,
                 double vitaminB, double folate, double vitaminB12, double pantothenicAcid,
                 double choline, double calcium, double copper, double fluoride, double iron,
                 double magnesium, double maganese, double phosphorus, double selenium, double zinc,
-                double potassium, double sodium, double carbohydrate, double protein, double fibre){
+                double potassium, double sodium, double carbohydrate, double protein, double fibre, double energy, double fat){
         this.id = id;
         this.name = name;
         this.cost = cost;
-        this.vitaminA = vitaminA;
+        this.vitaminA = vitaminA;//
         this.vitaminD = vitaminD;
         this.vitaminE = vitaminE;
         this.vitaminK = vitaminK;
         this.vitaminC = vitaminC;
-        this.thiamin = thiamin;
+        this.thiamin = thiamin;//
         this.riboflavin = riboflavin;
         this.niacin = niacin;
         this.vitaminB = vitaminB;
@@ -72,6 +74,8 @@ public class Food {
         this.carbohydrate = carbohydrate;
         this.protein = protein;
         this.fibre = fibre;
+        this.energy = energy;
+        this.fat = fat;
     }
 
     public double getFibre() {
@@ -192,6 +196,14 @@ public class Food {
 
     public int getId() {
         return id;
+    }
+
+    public double getEnergy() {
+        return energy;
+    }
+
+    public double getFat(){
+        return fat;
     }
 
 }

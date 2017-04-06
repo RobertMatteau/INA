@@ -3,20 +3,24 @@
 
 
     <group android:checkableBehavior="single">
-        <item
+       <!-- <item
             android:id="@+id/nav_scanner"
             android:icon="@drawable/ic_menu_camera"
             android:title="Scanner" />
-        <item
+        --><item
             android:id="@+id/nav_detailed_view"
             android:icon="@drawable/ic_menu_gallery"
             android:title="Detailed View" />
         <item
             android:id="@+id/nav_enter_informatio"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Enter Information" />
+            android:title="Food Information" />
         <item
             android:id="@+id/nav_meal_plan"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Base Food" />
+        <item
+            android:id="@+id/nav_daily_meal_plan"
             android:icon="@drawable/ic_menu_manage"
             android:title="Meal Plan" />
     </group>
@@ -47,17 +51,6 @@
         </menu>
     </item>
 
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
-        </menu>
-    </item>
+
 
 </menu>

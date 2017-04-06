@@ -26,69 +26,33 @@
         android:layout_alignParentTop="true"
         />
 
-    <ScrollView
+    <!--<ScrollView
         android:layout_width="match_parent"
         android:layout_height="900dp">
-        <LinearLayout
+      -->  <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
+            android:layout_marginTop="30dp"
             android:weightSum="1">
 
             <com.github.mikephil.charting.charts.PieChart
                 android:layout_width="match_parent"
-                android:layout_height="500dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
                 android:id="@+id/idPieChart1"
                 android:layout_marginBottom="3dp"
                 android:layout_marginTop="3dp">
 
             </com.github.mikephil.charting.charts.PieChart>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/editText5"
-                android:text="Warnings"
-                android:layout_gravity="center_horizontal"
-                android:textSize="40dp"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/editText6"
-                android:background="@drawable/textinputborder"
-                android:backgroundTint="#FF0000"
-                android:layout_marginTop="20dp"
-                android:text="Vitamin D less than 100%"
-                android:textSize="30dp"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/editText7"
-                android:background="@drawable/textinputborder"
-                android:backgroundTint="#FF0000"
-                android:layout_marginTop="20dp"
-                android:text="Zinc less than 100%"
-                android:textSize="30dp"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/editText8"
-                android:background="@drawable/textinputborders2"
-                android:backgroundTint="#00FF00"
-                android:layout_marginTop="20dp"
-                android:text="Calories greater than 100%"
-                android:textSize="30dp"/>
-
 
         </LinearLayout>
 
 
 
-    </ScrollView>
-
+   <!-- </ScrollView>
+-->
 
 
 

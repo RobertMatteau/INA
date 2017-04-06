@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.HorizontalBarChart;
 import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
@@ -43,9 +44,6 @@ public class FatsFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-
-
-
     public FatsFragment() {
         // Required empty public constructor
     }
@@ -62,8 +60,7 @@ public class FatsFragment extends Fragment {
     private TextView tvX, tvY;
     BarChart barChart;
 
-    private float[] yData = {30, 40, 50, 60, 70};
-    private String[] xData = {"A", "B", "C", "D", "E"};
+    float fat;
 
     // TODO: Rename and change types and number of parameters
     public static FatsFragment newInstance(String param1, String param2) {
@@ -83,14 +80,9 @@ public class FatsFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
 
-
-
-
-
+        fat = getArguments().getFloat("fats");
 
     }
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -99,36 +91,43 @@ public class FatsFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_fats, container, false);
 
         barChart = (BarChart) rootView.findViewById(R.id.bargraph);
-        //tvX = (TextView) rootView.findViewById(R.id.tvXMax);
-        //tvY = (TextView) rootView.findViewById(R.id.tvYMax);
 
-        barChart.setDescription("Graph");
-        addDataSet();
+        Legend l = barChart.getLegend();
+        l.setEnabled(true);
+        l.setFormSize(10f); // set the size of the legend forms/shapes
+        l.setForm(Legend.LegendForm.CIRCLE); // set what type of form/shape should be used
+        l.setPosition(Legend.LegendPosition.ABOVE_CHART_CENTER);
+        l.setTextSize(11f);
+        l.setTextColor(Color.BLACK);
+        l.setXEntrySpace(5f); // set the space between the legend entries on the x-axis
+        l.setYEntrySpace(3f); // set the space between the legend entries on the y-axis
 
-        //ArrayList<String> thevalues = new ArrayList<>();
-        //.add("Vitamin A");
-        ////thevalues.add("Vitamin B");
-        //thevalues.add("Vitamin C");
-        //thevalues.add("Vitamin D");
+        l.setWordWrapEnabled(true);
 
-        //BarDataset theData = new BarDataset(thevalues, "Values");
+        YAxis leftaxis = barChart.getAxisLeft();
+        leftaxis.setSpaceTop(20f);
+        YAxis rightaxis = barChart.getAxisRight();
+        rightaxis.setSpaceTop(20f);
 
-        //ArrayList<BarEntry> barEntries = new ArrayList<>();
-        //barEntries.add(new BarEntry(44f,0));
-        //barEntries.add(new BarEntry(88f,1));
-        //barEntries.add(new BarEntry(32f,2));
-        //barEntries.add(new BarEntry(56f,3));
+        barChart.getXAxis().setDrawLabels(false);
 
-        //BarData barDataSet = new BarData();
+        // set custom labels and colors
+        //change set names to be proper
+        l.setCustom(new int[] {Color.rgb(255, 167, 38)}, new String[] { "Fats" });
 
-        //barChart.setOnChartValueSelectedListener(this);
-        //barChart.setData(theData);
+        //put them in like value is
+        ArrayList<BarEntry> entries = new ArrayList<>();
 
-        barChart.setTouchEnabled(true);
-        barChart.setDragEnabled(true);
-        barChart.setScaleXEnabled(true);
-        barChart.setScaleYEnabled(true);
+        entries.add(new BarEntry(1f, fat));
 
+        BarDataSet dataset = new BarDataSet(entries, "Calls");
+
+        BarData data = new BarData(dataset);
+
+        barChart.setData(data);
+        barChart.setDescription("");
+        dataset.setColors(new int[] {Color.rgb(255, 167, 38)});
+        barChart.animateY(5000);
 
         return rootView;
     }
@@ -140,92 +139,11 @@ public class FatsFragment extends Fragment {
         }
     }
 
-    /*@Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }*/
-
     @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
     }
-
-    private void addDataSet()
-    {
-        ArrayList<BarEntry> yEntrys = new ArrayList<>();
-        ArrayList<String> xEntrys = new ArrayList<>();
-
-        for(int i = 0; i < yData.length; i++)
-        {
-            yEntrys.add(new BarEntry(yData[i], i));
-        }
-
-        for(int i = 0; i < xData.length; i++)
-        {
-            xEntrys.add(xData[i]);
-        }
-
-        //create the data set
-        BarDataSet pieDataSet = new BarDataSet(yEntrys, "Nutrition");
-        pieDataSet.setValueTextSize(12);
-
-        //add colors to dataset
-        ArrayList<Integer> colors = new ArrayList<>();
-        //colors.add(Color.BLUE);
-        //colors.add(Color.RED);
-        //colors.add(Color.GREEN);
-        //colors.add(Color.CYAN);
-        //colors.add(Color.MAGENTA);
-        //colors.add(Color.GRAY);
-        for (int c: ColorTemplate.JOYFUL_COLORS)
-        {
-            colors.add(c);
-        }
-        for (int c: ColorTemplate.VORDIPLOM_COLORS)
-        {
-            colors.add(c);
-        }
-        for (int c: ColorTemplate.LIBERTY_COLORS)
-        {
-            colors.add(c);
-        }
-        for (int c: ColorTemplate.COLORFUL_COLORS)
-        {
-            colors.add(c);
-        }
-        for (int c: ColorTemplate.PASTEL_COLORS)
-        {
-            colors.add(c);
-        }
-
-
-        pieDataSet.setColors(colors);
-
-        //add legend to chart
-        Legend legend = barChart.getLegend();
-        legend.setForm(Legend.LegendForm.CIRCLE);
-        legend.setPosition(Legend.LegendPosition.RIGHT_OF_CHART);
-        legend.setTextSize(12f);
-        legend.setTextColor(Color.BLACK);
-        legend.setCustom(ColorTemplate.JOYFUL_COLORS, xData);
-
-
-        //create pie data object
-        BarData pieData = new BarData(pieDataSet);
-        barChart.setData(pieData);
-        barChart.invalidate();
-
-
-    }
-
-
 
     /**
      * This interface must be implemented by activities that contain this

@@ -2,6 +2,8 @@ package com.ina.ina;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ProgressBar;
@@ -197,95 +199,584 @@ public class NutrientsActivity extends AppCompatActivity {
         p26 = (ProgressBar)findViewById(R.id.p26);
         p27 = (ProgressBar)findViewById(R.id.p27);
 
+        pv1.setText(t1 + " / 3000");
+        pv2.setText(t2 + " / 100");
+        pv3.setText(t3 + " / 4");
+        pv4.setText(t4 + " / 2000");
+        pv5.setText(t5 + " / 1000");
+        pv6.setText(t6 + " / 1000");
+        pv7.setText(t7 + " / 1000");
+        pv8.setText(t8 + " / 2");
+        pv9.setText(t9 + " / 2");
+        pv10.setText(t10 + " / 35");
+        pv11.setText(t11 + " / 1000");
+        pv12.setText(t12 + " / 10");
+        pv13.setText(t13 + " / 3500");
+        pv14.setText(t14 + " / 2500");
+        pv15.setText(t15 + " / 10");
+        pv16.setText(t16 + " / 500");
+        pv17.setText(t17 + " / 45");
+        pv18.setText(t18 + " / 800");
+        pv19.setText(t19 + " / 11");
+        pv20.setText(t20 + " / 4000");
+        pv21.setText(t21 + " / 400");
+        pv22.setText(t22 + " / 40");
+        pv23.setText(t23 + " / 9400");
+        pv24.setText(t24 + " / 2300");
+        pv25.setText(t25 + " / 260");
+        pv26.setText(t26 + " / 112");
+        pv27.setText(t27 + " / 76");
 
-
-        pv1.setText(t1);
-        pv2.setText(t2);
-        pv3.setText(t3);
-        pv4.setText(t4);
-        pv5.setText(t5);
-        pv6.setText(t6);
-        pv7.setText(t7);
-        pv8.setText(t8);
-        pv9.setText(t9);
-        pv10.setText(t10);
-        pv11.setText(t11);
-        pv12.setText(t12);
-        pv13.setText(t13);
-        pv14.setText(t14);
-        pv15.setText(t15);
-        pv16.setText(t16);
-        pv17.setText(t17);
-        pv18.setText(t18);
-        pv19.setText(t19);
-        pv20.setText(t20);
-        pv21.setText(t21);
-        pv22.setText(t22);
-        pv23.setText(t23);
-        pv24.setText(t24);
-        pv25.setText(t25);
-        pv26.setText(t26);
-        pv27.setText(t27);
+        p1.setMax(3000);
+        p2.setMax(100);
+        p3.setMax(4);
+        p4.setMax(2000);
+        p5.setMax(1000);
+        p6.setMax(1000);
+        p7.setMax(1000);
+        p8.setMax(2);
+        p9.setMax(2);
+        p10.setMax(35);
+        p11.setMax(1000);
+        p12.setMax(10);
+        p13.setMax(3500);
+        p14.setMax(2500);
+        p15.setMax(10);
+        p16.setMax(500);
+        p17.setMax(45);
+        p18.setMax(800);
+        p19.setMax(11);
+        p20.setMax(4000);
+        p21.setMax(400);
+        p22.setMax(40);
+        p23.setMax(9400);
+        p24.setMax(2300);
+        p25.setMax(260);
+        p26.setMax(112);
+        p27.setMax(76);
 
         p1.setProgress(i1);
+
+        if(i1 < 800){
+            p1.getProgressDrawable().setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i1 <900 && i1>=800){
+            p1.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i1> 3300){
+            p1.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+
+        }
+        else if(i1> 3000 && i1<=3300){
+            p1.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+
+        }else{
+            p1.getProgressDrawable().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN);
+
+        }
+
         p2.setProgress(i2);
+
+        if(i2 < 1){
+            p2.getProgressDrawable().setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i2 <2 && i2>=1){
+            p2.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i2> 110){
+            p2.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+
+        }
+        else if(i2> 100 && i2<=110){
+            p2.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+
+        }else{
+            p2.getProgressDrawable().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN);
+
+        }
         p3.setProgress(i3);
+
+        if(i3 < 1){
+            p3.getProgressDrawable().setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i3 <2 && i3>=1){
+            p3.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i3> 5){
+            p3.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+
+        }
+        else if(i3> 4 && i3<=5){
+            p3.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+
+        }else{
+            p3.getProgressDrawable().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN);
+
+        }
+
         p4.setProgress(i4);
+
+        if(i4 < 80){
+            p4.getProgressDrawable().setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i4 <90 && i4>=80){
+            p4.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i4> 2200){
+            p4.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+
+        }
+        else if(i4> 2000 && i4<=2200){
+            p4.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+
+        }else{
+            p4.getProgressDrawable().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN);
+
+        }
+
         p5.setProgress(i5);
+
+        if(i5 < 450){
+            p5.getProgressDrawable().setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i5 <500 && i5>=450){
+            p5.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i5> 1100){
+            p5.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+
+        }
+        else if(i5> 1000 && i5<=1100){
+            p5.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+
+        }else{
+            p5.getProgressDrawable().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN);
+
+        }
+
         p6.setProgress(i6);
+
+        if(i6 < 450){
+            p6.getProgressDrawable().setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i6 <500 && i6>=450){
+            p6.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i6> 1100){
+            p6.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+
+        }
+        else if(i6> 1000 && i6<=1100){
+            p6.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+
+        }else{
+            p6.getProgressDrawable().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN);
+
+        }
+
         p7.setProgress(i7);
+
+        if(i7 < 450){
+            p7.getProgressDrawable().setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i7 <500 && i7>=450){
+            p7.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i7> 1100){
+            p7.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+
+        }
+        else if(i7> 1000 && i7<=1100){
+            p7.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+
+        }else{
+            p7.getProgressDrawable().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN);
+
+        }
+
         p8.setProgress(i8);
+
+        if(i8 < 1){
+            p8.getProgressDrawable().setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i8> 2){
+            p8.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+
+        }
+        else{
+            p8.getProgressDrawable().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN);
+
+        }
+
         p9.setProgress(i9);
+
+        if(i9 < 1){
+            p9.getProgressDrawable().setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i9> 2){
+            p9.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+
+        }else{
+            p9.getProgressDrawable().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN);
+
+        }
+
         p10.setProgress(i10);
+
+        if(i10 < 14){
+            p10.getProgressDrawable().setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i10 <16 && i10>=14){
+            p10.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i10> 39){
+            p10.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+
+        }
+        else if(i10> 35 && i10<=39){
+            p10.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+
+        }else{
+            p10.getProgressDrawable().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN);
+
+        }
+
         p11.setProgress(i11);
+
+        if(i11 < 360){
+            p11.getProgressDrawable().setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i11 <400 && i11>=360){
+            p11.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i11> 1100){
+            p11.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+
+        }
+        else if(i11> 1000 && i11<=1100){
+            p11.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+
+        }else{
+            p11.getProgressDrawable().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN);
+
+        }
+
         p12.setProgress(i12);
+
+        if(i12 < 4){
+            p12.getProgressDrawable().setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i12 <5 && i12>=4){
+            p12.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i12> 11){
+            p12.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+
+        }
+        else if(i12> 10 && i12<=11){
+            p12.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+
+        }else{
+            p12.getProgressDrawable().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN);
+
+        }
+
         p13.setProgress(i13);
+
+        if(i13 < 495){
+            p13.getProgressDrawable().setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i13 <550 && i13>=495){
+            p13.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i13> 3650){
+            p13.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+
+        }
+        else if(i13> 3500 && i13<=3650){
+            p13.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+
+        }else{
+            p13.getProgressDrawable().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN);
+
+        }
+
         p14.setProgress(i14);
+
+        if(i14 < 900){
+            p14.getProgressDrawable().setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i14 <1000 && i14>=900){
+            p14.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i14> 2750){
+            p14.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+
+        }
+        else if(i14> 2500 && i14<=2750){
+            p14.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+
+        }else{
+            p14.getProgressDrawable().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN);
+
+        }
+
         p15.setProgress(i15);
+
+        if(i15 < 1){
+            p15.getProgressDrawable().setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i15> 11){
+            p15.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+
+        }
+        else if(i15> 10 && i15<=11){
+            p15.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+
+        }else{
+            p15.getProgressDrawable().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN);
+
+        }
+
         p16.setProgress(i16);
+
+        if(i16 < 90){
+            p16.getProgressDrawable().setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i16 <100 && i16>=90){
+            p16.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i16> 550){
+            p16.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+
+        }
+        else if(i16> 500 && i16<=550){
+            p16.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+
+        }else{
+            p16.getProgressDrawable().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN);
+
+        }
+
         p17.setProgress(i17);
+
+        if(i17 < 7){
+            p17.getProgressDrawable().setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i17 <8 && i17>=7){
+            p17.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i17> 50){
+            p17.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+
+        }
+        else if(i17> 45 && i17<=50){
+            p17.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+
+        }else{
+            p17.getProgressDrawable().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN);
+
+        }
+
         p18.setProgress(i18);
+
+        if(i18 < 360){
+            p18.getProgressDrawable().setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i18 <400 && i18>=360){
+            p18.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i18> 880){
+            p18.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+
+        }
+        else if(i18> 800 && i18<=880){
+            p18.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+
+        }else{
+            p18.getProgressDrawable().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN);
+
+        }
+
         p19.setProgress(i19);
+
+        if(i19 < 1){
+            p19.getProgressDrawable().setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i19 <2 && i19>=1){
+            p19.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i19> 12){
+            p19.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+
+        }
+        else if(i19> 11 && i19<=12){
+            p19.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+
+        }else{
+            p19.getProgressDrawable().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN);
+
+        }
+
         p20.setProgress(i20);
+
+        if(i20 < 630){
+            p20.getProgressDrawable().setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i20 <700 && i20>=630){
+            p20.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i20> 4400){
+            p20.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+
+        }
+        else if(i20> 4000 && i20<=4400){
+            p20.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+
+        }else{
+            p20.getProgressDrawable().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN);
+
+        }
+
         p21.setProgress(i21);
+
+        if(i21 < 50){
+            p21.getProgressDrawable().setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i21 <55 && i21>=50){
+            p21.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i21> 440){
+            p21.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+
+        }
+        else if(i21> 400 && i21<=440){
+            p21.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+
+        }else{
+            p21.getProgressDrawable().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN);
+
+        }
+
         p22.setProgress(i22);
+
+        if(i22 < 10){
+            p22.getProgressDrawable().setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i22 <11 && i22>=10){
+            p22.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i22> 44){
+            p22.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+
+        }
+        else if(i22> 40 && i22<=44){
+            p22.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+
+        }else{
+            p22.getProgressDrawable().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN);
+
+        }
+
         p23.setProgress(i23);
+
+        if(i23 < 4230){
+            p23.getProgressDrawable().setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i23 <4700 && i23>=4230){
+            p23.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i23> 10340){
+            p23.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+
+        }
+        else if(i23> 9400 && i23<=10340){
+            p23.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+
+        }else{
+            p23.getProgressDrawable().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN);
+
+        }
+
         p24.setProgress(i24);
+
+        if(i24 < 1350){
+            p24.getProgressDrawable().setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i24 <1500 && i24>=1350){
+            p24.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i24> 2530){
+            p24.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+
+        }
+        else if(i24> 2300 && i24<=2530){
+            p24.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+
+        }else{
+            p24.getProgressDrawable().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN);
+
+        }
+
         p25.setProgress(i25);
+
+        if(i25 < 117){
+            p25.getProgressDrawable().setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i25 <130 && i25>=117){
+            p25.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i25> 286){
+            p25.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+
+        }
+        else if(i25> 260 && i25<=286){
+            p25.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+
+        }else{
+            p25.getProgressDrawable().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN);
+
+        }
+
         p26.setProgress(i26);
+
+        if(i26 < 50){
+            p26.getProgressDrawable().setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i26 <56 && i26>=50){
+            p26.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i26> 123){
+            p26.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+
+        }
+        else if(i26> 112 && i26<=123){
+            p26.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+
+        }else{
+            p26.getProgressDrawable().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN);
+
+        }
+
         p27.setProgress(i27);
 
+        if(i27 < 34){
+            p27.getProgressDrawable().setColorFilter(Color.BLUE, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i27 <38 && i27>=34){
+            p27.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
+        }
+        else if(i27> 84){
+            p27.getProgressDrawable().setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
 
+        }
+        else if(i27> 76 && i27<=84){
+            p27.getProgressDrawable().setColorFilter(Color.YELLOW, PorterDuff.Mode.SRC_IN);
 
+        }else{
+            p27.getProgressDrawable().setColorFilter(Color.GREEN, PorterDuff.Mode.SRC_IN);
 
-        p1.setMax(500);
-        p2.setMax(500);
-        p3.setMax(500);
-        p4.setMax(500);
-        p5.setMax(500);
-        p6.setMax(500);
-        p7.setMax(500);
-        p8.setMax(500);
-        p9.setMax(500);
-        p10.setMax(500);
-        p11.setMax(500);
-        p12.setMax(500);
-        p13.setMax(500);
-        p14.setMax(500);
-        p15.setMax(500);
-        p16.setMax(500);
-        p17.setMax(500);
-        p18.setMax(500);
-        p19.setMax(500);
-        p20.setMax(500);
-        p21.setMax(500);
-        p22.setMax(500);
-        p23.setMax(500);
-        p24.setMax(500);
-        p25.setMax(500);
-        p26.setMax(500);
-        p27.setMax(500);
-
+        }
 
     }
 }

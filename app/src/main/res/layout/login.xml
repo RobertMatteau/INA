@@ -10,6 +10,7 @@
     android:background="#FFFFFF"
     tools:context="com.ina.ina.LoginActivity">
 
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -29,6 +30,9 @@
         android:layout_centerHorizontal="true"
         android:textColor="#FFA500"
         android:textSize="35dp" />
+
+
+
 
     <EditText
         android:layout_width="wrap_content"

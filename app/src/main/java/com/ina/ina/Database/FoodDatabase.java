@@ -7,14 +7,32 @@ package com.ina.ina.Database;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.ina.ina.Data.Food;
 import com.readystatesoftware.sqliteasset.SQLiteAssetHelper;
 
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Headers;
+import okhttp3.Request;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
+
 public class FoodDatabase extends SQLiteAssetHelper{
-    private static final String DATABASE_NAME ="prototype-nutrition-capstone.sqlite";
+    private static final String DATABASE_NAME ="newfood.sqlite";
     private static final int DATABASE_VERSION = 1;
+
+    ArrayList<Food> edibleList;
+    ArrayList<Food> foodList;
 
     public FoodDatabase(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -57,174 +75,333 @@ public class FoodDatabase extends SQLiteAssetHelper{
         Cursor find = food.query(
                 "Foods",
                 null,
-                "edible == 1",
+                null,
                 null,
                 null,
                 null,
                 null,
                 null);
 
-        ArrayList<Food> edibleList = new ArrayList<>();
+        edibleList = new ArrayList<>();
         find.moveToFirst();
 
         while(!(find.isAfterLast())){
-            int id = find.getInt(find.getColumnIndex("id"));
-            String name = find.getString(find.getColumnIndex("name"));
+            int id = find.getInt(find.getColumnIndex("field1"));
 
-            double cost = 12;
-            if(find.getColumnIndex("cost") != 0){
-                cost = find.getDouble((find.getColumnIndex("cost")));
+            String url = "http://diet.uoitscheduler.com/food_api?food_id=" + Integer.toString(id);
+            Request request = new Request.Builder().url(url).build();
+            getFoodInfo(request);
+            try {
+                Thread.sleep(20);
+            }catch(InterruptedException e) {
+                Log.d("Stopped", "the first interrupt");
             }
-
-            double vitaminA = 0;
-            if(find.getColumnIndex("n320") != 0) {
-                vitaminA = find.getDouble((find.getColumnIndex("n320")));
-            }
-
-            double vitaminD = 0;
-            if(find.getColumnIndex("n328") != 0) {
-                vitaminD = find.getDouble((find.getColumnIndex("n328")));
-            }
-
-            double vitaminE = 0;
-            if(find.getColumnIndex("n323") != 0) {
-                vitaminE = find.getDouble((find.getColumnIndex("n323")));
-            }
-
-            double vitaminK = 0;
-            if(find.getColumnIndex("n430") != 0) {
-                vitaminK = find.getDouble((find.getColumnIndex("n430")));
-            }
-
-            double vitaminC = 0;
-            if(find.getColumnIndex("n401") != 0) {
-                vitaminC = find.getDouble((find.getColumnIndex("n401")));
-            }
-
-            double thiamin = 0;
-            if(find.getColumnIndex("n404") != 0) {
-                thiamin = find.getDouble((find.getColumnIndex("n404")));
-            }
-
-            double riboflavin = 0;
-            if(find.getColumnIndex("n405") != 0) {
-                riboflavin = find.getDouble((find.getColumnIndex("n405")));
-            }
-
-            double niacin = 0;
-            if(find.getColumnIndex("n406") != 0) {
-                niacin = find.getDouble((find.getColumnIndex("n406")));
-            }
-
-            double vitaminB = 0;
-            if(find.getColumnIndex("n415") != 0) {
-                vitaminB = find.getDouble((find.getColumnIndex("n415")));
-            }
-            double folate = 0;
-            if(find.getColumnIndex("n417") != 0) {
-                folate = find.getDouble((find.getColumnIndex("n417")));
-            }
-
-            double vitaminB12 = 0;
-            if(find.getColumnIndex("n418") != 0) {
-                vitaminB12 = find.getDouble((find.getColumnIndex("n418")));
-            }
-
-            double pantothenicAcid = 0;
-            if(find.getColumnIndex("n410") != 0) {
-                pantothenicAcid = find.getDouble((find.getColumnIndex("n410")));
-            }
-
-            double choline = 0;
-            if(find.getColumnIndex("n421") != 0) {
-                choline = find.getDouble((find.getColumnIndex("n421")));
-            }
-
-            double calcium = 0;
-            if(find.getColumnIndex("n301") != 0) {
-                calcium = find.getDouble((find.getColumnIndex("n301")));
-            }
-
-            double copper = 0;
-            if(find.getColumnIndex("n312") != 0) {
-                copper = find.getDouble((find.getColumnIndex("n312")));
-            }
-
-            double flouride = 0;
-            if(find.getColumnIndex("n313") != 0) {
-                flouride = find.getDouble((find.getColumnIndex("n313")));
-            }
-
-            double iron = 0;
-            if(find.getColumnIndex("n303") != 0) {
-                iron = find.getDouble((find.getColumnIndex("n303")));
-            }
-
-            double magnesium = 0;
-            if(find.getColumnIndex("n304") != 0) {
-                magnesium = find.getDouble((find.getColumnIndex("n304")));
-            }
-
-            double maganese = 0;
-            if(find.getColumnIndex("n315") != 0) {
-                maganese = find.getDouble((find.getColumnIndex("n315")));
-            }
-
-            double phosphorus = 0;
-            if(find.getColumnIndex("n305") != 0) {
-                phosphorus = find.getDouble((find.getColumnIndex("n305")));
-            }
-
-            double selenium = 0;
-            if(find.getColumnIndex("n317") != 0) {
-                selenium = find.getDouble((find.getColumnIndex("n317")));
-            }
-
-            double zinc = 0;
-            if(find.getColumnIndex("n309") != 0) {
-                zinc = find.getDouble((find.getColumnIndex("n309")));
-            }
-
-            double potassium = 0;
-            if(find.getColumnIndex("n309") != 0) {
-                potassium = find.getDouble((find.getColumnIndex("n309")));
-            }
-
-            double sodium = 0;
-            if(find.getColumnIndex("n307") != 0) {
-                sodium = find.getDouble((find.getColumnIndex("n401")));
-            }
-
-            double carbohydrate = 0;
-            if(find.getColumnIndex("n205") != 0) {
-                carbohydrate = find.getDouble((find.getColumnIndex("n205")));
-            }
-
-            double protein = 0;
-            if(find.getColumnIndex("n203") != 0) {
-                protein = find.getDouble((find.getColumnIndex("n203")));
-            }
-
-            double fibre = 0;
-            if(find.getColumnIndex("n291") != 0) {
-                fibre = find.getDouble((find.getColumnIndex("n291")));
-            }
-
-            Food numnum = new Food(id, name, cost, vitaminA, vitaminD, vitaminE, vitaminK, vitaminC,
-                    thiamin, riboflavin, niacin, vitaminB, folate, vitaminB12, pantothenicAcid,
-                    choline, calcium, copper, flouride, iron, magnesium, maganese, phosphorus,
-                    selenium, zinc, potassium, sodium, carbohydrate, protein, fibre);
-
-            edibleList.add(numnum);
             find.moveToNext();
         }
-        find.close();
-        food.close();
+        try {
+            Thread.sleep(20000);
+            find.close();
+            food.close();
+            return edibleList;
+        }catch(InterruptedException e){
+            Log.d("Stoped", "There was an interrupt");
+        }
         return edibleList;
     }
 
+    public void getFoodInfo (final Request request){
+        OkHttpClient client = new OkHttpClient();
+
+        try{
+            client.newCall(request).enqueue(new Callback(){
+
+                @Override
+                public void onFailure(Call call, IOException e) {e.printStackTrace();}
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException{
+                    if (!response.isSuccessful()){
+                        throw new IOException("Unexpected code " + response);
+                    }
+                    String jsonString = response.body().string();
+                    try{
+                        JSONObject foodJson = new JSONObject(jsonString);
+                        final Food food = new Food(
+                                foodJson.getInt("id"),
+                                foodJson.getString("short_name"),
+                                Double.parseDouble(foodJson.getString("cost")),
+                                Double.parseDouble(foodJson.getString("vitaminA")),
+                                Double.parseDouble(foodJson.getString("vitaminD")),
+                                Double.parseDouble(foodJson.getString("vitaminE")),
+                                Double.parseDouble(foodJson.getString("vitaminK")),
+                                Double.parseDouble(foodJson.getString("vitaminC")),
+                                Double.parseDouble(foodJson.getString("thiamin")),
+                                Double.parseDouble(foodJson.getString("riboflavin")),
+                                Double.parseDouble(foodJson.getString("niacin")),
+                                0.0,
+                                0.0,
+                                0.0,
+                                Double.parseDouble(foodJson.getString("pantothenicAcid")),
+                                Double.parseDouble(foodJson.getString("choline")),
+                                Double.parseDouble(foodJson.getString("calcium")),
+                                Double.parseDouble(foodJson.getString("copper")),
+                                Double.parseDouble(foodJson.getString("fluoride")),
+                                Double.parseDouble(foodJson.getString("iron")),
+                                Double.parseDouble(foodJson.getString("magnesium")),
+                                Double.parseDouble(foodJson.getString("manganese")),
+                                Double.parseDouble(foodJson.getString("phosphorus")),
+                                Double.parseDouble(foodJson.getString("selenium")),
+                                Double.parseDouble(foodJson.getString("zinc")),
+                                Double.parseDouble(foodJson.getString("potassium")),
+                                Double.parseDouble(foodJson.getString("sodium")),
+                                Double.parseDouble(foodJson.getString("carbohydrate")),
+                                Double.parseDouble(foodJson.getString("protein")),
+                                Double.parseDouble(foodJson.getString("fiber")),
+                                Double.parseDouble(foodJson.getString("energy")),
+                                Double.parseDouble(foodJson.getString("fat"))
+                        );
+                        edibleList.add(food);
+                        Log.d("test", food.getName());
+                    }catch(JSONException e){
+                        e.printStackTrace();
+                    }
+                }
+            });
+        }catch(Exception e){
+
+        }
+    }
+
+    public ArrayList<Food> getBasicFoodInfo(){
+        SQLiteDatabase food = this.getReadableDatabase();
+
+        Cursor find = food.query(
+                "Foods",
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null);
+
+        foodList = new ArrayList<>();
+        find.moveToFirst();
+
+        while(!(find.isAfterLast())) {
+            int id = find.getInt(find.getColumnIndex("field1"));
+            String name = find.getString(find.getColumnIndex("field3"));
+            String cost = find.getString(find.getColumnIndex("field8"));
+            double trueCost = Double.parseDouble(cost);
+
+            final Food basicFood = new Food(id, name, trueCost, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+
+            foodList.add(basicFood);
+            find.moveToNext();
+        }
+
+        find.close();
+        food.close();
+
+        return foodList;
+    }
+
+    public Food getFood(String name){
+        SQLiteDatabase food = this.getReadableDatabase();
+        String[] select = new String[1];
+        select[0] = name;
+
+        Cursor find = food.query(
+                "Foods",
+                null,
+                "field3 == ?",
+                select,
+                null,
+                null,
+                null,
+                null);
+
+        find.moveToFirst();
+        Food basicFood = new Food(0, "blank", 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+
+        while(!(find.isAfterLast())) {
+            int id = find.getInt(find.getColumnIndex("field1"));
+            String cost = find.getString(find.getColumnIndex("field8"));
+            double trueCost = Double.parseDouble(cost);
+
+            basicFood = new Food(id, name, trueCost, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+
+            find.moveToNext();
+        }
+
+        find.close();
+        food.close();
+
+        return basicFood;
+    }
+
+    public String getFoodAmount(String name){
+        SQLiteDatabase food = this.getReadableDatabase();
+        String[] select = new String[1];
+        select[0] = name;
+
+        Cursor find = food.query(
+                "Foods",
+                null,
+                "field3 == ?",
+                select,
+                null,
+                null,
+                null,
+                null);
+
+        find.moveToFirst();
+        String amount = "";
+
+        while(!(find.isAfterLast())) {
+            double am = find.getDouble(find.getColumnIndex("field7"))*100;
+            amount = Double.toString(am);
+
+            find.moveToNext();
+        }
+
+        find.close();
+        food.close();
+
+        return amount;
+    }
+
+    public String getMealPlanItem(String id){
+        SQLiteDatabase food = this.getReadableDatabase();
+        String item = "";
+        String[] select = new String[1];
+        select[0] = id;
+
+        Cursor find = food.query(
+                "Foods",
+                null,
+                "field1 == ?",
+                select,
+                null,
+                null,
+                null,
+                null);
+
+        find.moveToFirst();
+
+        while(!(find.isAfterLast())) {
+            String itemName = find.getString(find.getColumnIndex("field3"));
+            Log.d("test1", itemName);
+            String itemPrice = find.getString(find.getColumnIndex("field8"));
+            Log.d("test2", itemPrice);
+            Double itemSize = (find.getDouble(find.getColumnIndex("field7"))) * 100;
+            Log.d("test3", itemSize.toString());
+
+            item = itemName + ", $" + itemPrice + " per: " + itemSize.toString() + " grams";
+            find.moveToNext();
+        }
+
+        find.close();
+        food.close();
+
+        return item;
+    }
+
+    public String getFoodId(String name){
+        SQLiteDatabase food = this.getReadableDatabase();
+        String foodID = "0";
+        String[] select = new String[1];
+        select[0] = name;
+
+        Cursor find = food.query(
+                "Foods",
+                null,
+                "field3 == ?",
+                select,
+                null,
+                null,
+                null,
+                null);
+
+        find.moveToFirst();
+
+        while(!(find.isAfterLast())) {
+            int id = find.getInt(find.getColumnIndex("field1"));
+            foodID = Integer.toString(id);
+            find.moveToNext();
+        }
+
+        find.close();
+        food.close();
+
+        return foodID;
+    }
+
+    public String getFoodCost(String id){
+        SQLiteDatabase food = this.getReadableDatabase();
+        String cost = "0";
+        String[] select = new String[1];
+        select[0] = id;
+
+        Cursor find = food.query(
+                "Foods",
+                null,
+                "field1 = ?",
+                select,
+                null,
+                null,
+                null,
+                null);
+
+        find.moveToFirst();
+
+        while(!(find.isAfterLast())) {
+            cost = find.getString(find.getColumnIndex("field8"));
+
+            find.moveToNext();
+        }
+
+        find.close();
+        food.close();
+
+        return cost;
+    }
+
+    public String getFoodName(String id){
+        SQLiteDatabase food = this.getReadableDatabase();
+        String name = "0";
+        String[] select = new String[1];
+        select[0] = id;
+
+        Cursor find = food.query(
+                "Foods",
+                null,
+                "field1 = ?",
+                select,
+                null,
+                null,
+                null,
+                null);
+
+        find.moveToFirst();
+
+        while(!(find.isAfterLast())) {
+            name = find.getString(find.getColumnIndex("field3"));
+
+            find.moveToNext();
+        }
+
+        find.close();
+        food.close();
+
+        return name;
+    }
+
     public Food getFoodByName(ArrayList<Food> list, String name){
-        Food fuud = new Food(0, "", 30,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
+        Food fuud = new Food(0, "", 30,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
 
         for (int i=0; i < list.size(); i++){
             Food compare = list.get(i);
@@ -237,5 +414,7 @@ public class FoodDatabase extends SQLiteAssetHelper{
         }
         return fuud;
     }
+
+
 }
 

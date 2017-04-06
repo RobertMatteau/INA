@@ -60,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
 
         }
         else {
-            loginurl = "http://a936da7a.ngrok.io/login_api?email=" + emaill + "&password=" + passwordl;
+            loginurl = "http://diet.uoitscheduler.com/login_api?email=" + emaill + "&password=" + passwordl;
 
             new LoginTest(this).execute();
         }

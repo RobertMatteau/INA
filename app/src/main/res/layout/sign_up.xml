@@ -41,6 +41,7 @@
                 android:layout_alignEnd="@+id/editText3"
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="43dp"
+                android:focusable="false"
                 android:layout_toEndOf="@+id/textView8"
                 android:ems="10"
                 android:inputType="number" />
@@ -78,6 +79,7 @@
                 android:layout_alignStart="@+id/editText"
                 android:layout_alignTop="@+id/textView"
                 android:ems="10"
+                android:focusable="false"
                 android:inputType="number" />
 
             <TextView
@@ -99,6 +101,7 @@
                 android:layout_alignEnd="@+id/checkBox222"
                 android:layout_alignTop="@+id/textView3"
                 android:layout_toEndOf="@+id/textView8"
+                android:focusable="false"
                 android:ems="10"
                 android:inputType="date" />
 
@@ -119,6 +122,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="false"
+                android:clickable="false"
                 android:layout_alignBottom="@+id/textView4"
                 android:layout_alignStart="@+id/checkBox11" />
 
@@ -137,7 +141,8 @@
                 android:id="@+id/checkBox2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_above="@+id/textView8"
+                android:clickable="false"
+                android:layout_alignBottom="@+id/textView5"
                 android:layout_toStartOf="@+id/textView6" />
 
             <TextView
@@ -147,7 +152,7 @@
                 android:text="@string/F"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000000"
-                android:layout_above="@+id/textView8"
+                android:layout_alignBottom="@+id/checkBox2"
                 android:layout_alignStart="@+id/checkBox222" />
 
             <TextView
@@ -167,6 +172,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="false"
+                android:clickable="false"
                 android:layout_alignBaseline="@+id/textView8"
                 android:layout_alignBottom="@+id/textView8"
                 android:layout_toStartOf="@+id/checkBox111" />
@@ -185,8 +191,9 @@
                 android:id="@+id/checkBox22"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/textView8"
-                android:layout_alignStart="@+id/checkBox2" />
+                android:clickable="false"
+                android:layout_alignBottom="@+id/checkBox11"
+                android:layout_toEndOf="@+id/checkNutY" />
 
             <TextView
                 android:id="@+id/textView10"
@@ -215,6 +222,7 @@
                 android:layout_alignBaseline="@+id/textView11"
                 android:layout_alignBottom="@+id/textView11"
                 android:layout_marginStart="11dp"
+                android:clickable="false"
                 android:layout_toEndOf="@+id/textView11"
                 android:checked="false" />
 
@@ -232,9 +240,9 @@
                 android:id="@+id/checkBox222"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:clickable="false"
                 android:layout_alignBottom="@+id/textView12"
-                android:layout_marginStart="13dp"
-                android:layout_toEndOf="@+id/textView12" />
+                android:layout_toEndOf="@+id/checkBox22" />
 
             <TextView
                 android:id="@+id/textView13"
@@ -246,15 +254,7 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="#000000" />
 
-            <TextView
-                android:id="@+id/textView15"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/textView10"
-                android:layout_marginTop="60dp"
-                android:text="Select Activity Level"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="#000000" />
+
 
             <Spinner
                 android:layout_width="wrap_content"
@@ -262,18 +262,16 @@
                 android:id="@+id/spinDiet"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentEnd="true"
-                android:layout_toEndOf="@+id/textView15"
-                android:layout_alignTop="@+id/textView15" />
+                android:layout_toEndOf="@+id/textView13"
+                android:layout_alignTop="@+id/textView13" />
 
 
             <TextView
                 android:id="@+id/textView20"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginEnd="79dp"
-                android:layout_marginTop="128dp"
+                android:layout_alignBottom="@+id/editText2"
+                android:layout_toRightOf="@+id/editText2"
                 android:text="cm"
                 android:textAppearance="@android:style/TextAppearance.Material.Medium" />
 
@@ -316,6 +314,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="false"
+                android:clickable="false"
                 android:layout_alignBaseline="@+id/textNut"
                 android:layout_alignBottom="@+id/textNut"
                 android:layout_toEndOf="@+id/textNut"
@@ -335,9 +334,10 @@
                 android:id="@+id/checkNutX"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/textNut"
-                android:layout_alignStart="@+id/checkBox222"
-                android:layout_marginLeft="20dp"/>
+                android:clickable="false"
+                android:layout_marginLeft="20dp"
+                android:layout_alignTop="@+id/nutyes"
+                android:layout_alignEnd="@+id/textView21" />
 
             <TextView
                 android:id="@+id/nutno"
@@ -366,6 +366,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="false"
+                android:clickable="false"
                 android:layout_alignBaseline="@+id/textMeat"
                 android:layout_alignBottom="@+id/textMeat"
                 android:layout_alignLeft="@+id/checkNutY" />
@@ -384,7 +385,8 @@
                 android:id="@+id/checkMeatN"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/textMeat"
+                android:clickable="false"
+                android:layout_alignBottom="@+id/checkMeatY"
                 android:layout_alignStart="@+id/checkNutX" />
 
             <TextView
@@ -414,6 +416,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="false"
+                android:clickable="false"
                 android:layout_alignBaseline="@+id/textLactose"
                 android:layout_alignBottom="@+id/textLactose"
                 android:layout_alignLeft="@+id/checkMeatY" />
@@ -432,7 +435,8 @@
                 android:id="@+id/checkLactoseN"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/textLactose"
+                android:clickable="false"
+                android:layout_alignBottom="@+id/checkLactoseY"
                 android:layout_alignStart="@+id/checkMeatN" />
 
             <TextView
@@ -462,6 +466,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="false"
+                android:clickable="false"
                 android:layout_alignBaseline="@+id/textGluten"
                 android:layout_alignBottom="@+id/textGluten"
                 android:layout_alignLeft="@+id/checkLactoseY" />
@@ -480,8 +485,10 @@
                 android:id="@+id/checkGlutenN"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/textGluten"
-                android:layout_alignStart="@+id/checkMeatN" />
+                android:clickable="false"
+                android:layout_alignBaseline="@+id/glutenyes"
+                android:layout_alignBottom="@+id/glutenyes"
+                android:layout_alignStart="@+id/checkLactoseN" />
 
             <TextView
                 android:id="@+id/glutenno"
@@ -497,7 +504,7 @@
                 style="?android:attr/buttonStyleSmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Sign Up"
+                android:text="Save"
                 android:background="@drawable/textinputborders2"
                 android:id="@+id/button4"
                 android:onClick="signUp"
